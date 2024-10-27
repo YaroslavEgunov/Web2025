@@ -1,0 +1,52 @@
+﻿@{
+	ViewData["Title"] = "Подтверждение данных";
+}
+
+<head>
+    <link rel=stylesheet type="text/css" href="style.css">
+</head> 
+
+<style>
+    #image {
+        display: none;
+        margin-top: 20px;
+        margin:auto;
+    }
+</style>
+
+<body>
+
+    <img id="image" src="~/images/control.jpg" alt="Приветственное изображение">
+
+    <script>
+
+        function getUserInfo() {
+
+            const lastName = prompt("Введите свою фамилию:");
+            const gender = prompt("Введите свой пол (мужской/женский):");
+            let age;
+            while (true) {
+                age = prompt("Введите свой возраст (только цифры):");
+                if (/^\d+$/.test(age)) {
+                    break; 
+                } else {
+                    alert("Ошибка: введите корректный возраст (только цифры).");
+                }
+            }
+
+            var isCorrect = confirm(`Вы ввели следующие данные:\nФамилия: ${lastName}\nПол: ${gender}\nВозраст: ${age}\n\nВерно?`);
+
+            if (isCorrect) {
+                alert(`Привет, ${lastName}!`);
+                document.getElementById('image').style.display = 'block'; 
+            } 
+            else {
+                alert("Данные введены неверно. Пожалуйста, попробуйте снова.");
+            }
+        }
+
+        getUserInfo();
+
+    </script>
+
+</body>

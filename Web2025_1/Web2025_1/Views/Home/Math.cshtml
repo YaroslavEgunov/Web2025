@@ -1,0 +1,66 @@
+﻿@{
+    ViewData["Title"] = "Математика";
+}
+
+<head>
+    <link rel=stylesheet type="text/css" href="style.css">
+</head>
+
+<body>
+    <script>
+        function calculate() {
+
+            let x;
+            while (true) {
+                x = parseFloat(prompt("Введите первое число (x):"));
+                if (/^\d+$/.test(x)) {
+                    break;
+                } else {
+                    alert("Ошибка принимаются только цифры");
+                }
+            }
+
+            let y;
+            while (true) {
+                y = parseFloat(prompt("Введите первое число (y):"));
+                if (/^\d+$/.test(y)) {
+                    break;
+                } else {
+                    alert("Ошибка принимаются только цифры");
+                }
+            }
+
+            const operation = prompt("Введите знак операции (+, -, *, /):");
+
+            let result;
+
+            switch (operation) {
+                case '+':
+                    result = x + y;
+                    break;
+                case '-':
+                    result = x - y;
+                    break;
+                case '*':
+                    result = x * y;
+                    break;
+                case '/':
+                    if (y === 0) {
+                        alert("Ошибка: деление на ноль!");
+                        return; // Выход из функции
+                    }
+                    result = x / y;
+                    break;
+                default:
+                    alert("Ошибка: неверный знак операции!");
+                    return; // Выход из функции
+            }
+
+            alert(`Результат: ${result}`);
+        }
+
+        // Вызов функции
+        calculate();
+    </script>
+</body>
+
