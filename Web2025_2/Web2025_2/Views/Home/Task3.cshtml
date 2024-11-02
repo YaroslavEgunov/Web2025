@@ -7,6 +7,27 @@
 </head>
 
 <body>
-    
+    <script>
+        function calculateArea() 
+        {
+            const length = parseFloat(document.getElementById('length').value);
+            const width = parseFloat(document.getElementById('width').value);
+            const area = length * width;
+            document.getElementById('result').textContent = `Площадь прямоугольника: ${area}`;
+        }
+    </script>
+
+    <label for="length">Длина:</label>
+    <input type="number" id="length" required>
+    <br>
+    <br>
+    <label for="width">Ширина:</label>
+    <input type="number" id="width" required>
+    <br>
+    <br>
+    <button onclick="calculateArea()">Вычислить площадь</button>
+    <br>
+    <br>
+    <p id="result"></p>
 </body>
 
