@@ -6,42 +6,41 @@
     <link rel=stylesheet type="text/css" href="style.css">
 </head>
 
-<body onload="getBirthday()">
-    <script>
-        function getBirthday() 
-        {
-            const birthDate = prompt("Введите вашу дату рождения (дд.мм.гггг):");
+<script>
+    function getBirthday() 
+    {
+        const birthDate = prompt("Введите вашу дату рождения (дд.мм.гггг):");
 
-            if (birthDate) 
-            {
-                const [day, month, year] = birthDate.split('.').map(Number);
-                const date = new Date(year, month - 1, day);
+        if (birthDate) {
+            const [day, month, year] = birthDate.split('.').map(Number);
+            const date = new Date(year, month - 1, day);
 
-                if (date.getDate() !== day || date.getMonth() !== month - 1 || 
-                    date.getFullYear() !== year) 
-                {
-                    document.body.innerHTML = "<h1>Некорректная дата. Попробуйте снова.</h1>";
-                    return;
-                }
-
-                const daysOfWeek = ["Воскресенье", "Понедельник", "Вторник", "Среда", 
-                    "Четверг", "Пятница", "Суббота"];
-                const months = ["Январь", "Февраль", "Март", "Апрель", "Май", "Июнь", "Июль", 
-                    "Август", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь"];
-
-                const dayOfWeek = daysOfWeek[date.getDay()];
-                const monthName = months[month - 1];
-
-                const birthdayWindow = window.open('', '_blank');
-                birthdayWindow.document.write('Ваша дата рождения: ', dayOfWeek, ', ', day, 
-                    ' ', monthName, ', ', year, ' года')
-                birthdayWindow.document.close();
-            } 
-            else 
-            {
-                document.body.innerHTML = "<h1>Дата рождения не введена.</h1>";
+            if (date.getDate() !== day || date.getMonth() !== month - 1 ||
+                date.getFullYear() !== year) {
+                document.body.innerHTML = "<h1>Некорректная дата. Попробуйте снова.</h1>";
+                return;
             }
+
+            const daysOfWeek = ["Воскресенье", "Понедельник", "Вторник", "Среда",
+                "Четверг", "Пятница", "Суббота"];
+            const months = ["Январь", "Февраль", "Март", "Апрель", "Май", "Июнь", "Июль",
+                "Август", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь"];
+
+            const dayOfWeek = daysOfWeek[date.getDay()];
+            const monthName = months[month - 1];
+
+            const birthdayWindow = window.open('', '_blank');
+            birthdayWindow.document.write('Ваша дата рождения: ', dayOfWeek, ', ', day,
+                ' ', monthName, ', ', year, ' года')
+            birthdayWindow.document.close();
         }
-    </script>
+        else {
+            document.body.innerHTML = "<h1>Дата рождения не введена.</h1>";
+        }
+    }
+</script>
+
+<body onload="getBirthday()">
+    
 </body>
 

@@ -6,25 +6,24 @@
     <link rel=stylesheet type="text/css" href="style.css">
 </head>
 
+<script>
+    function calculateDaysUntilHolidays() {
+        const today = new Date();
+        const year = today.getFullYear();
+        const holidays = [
+            new Date(year, 11, 30),
+            new Date(year, 5, 1)
+        ];
+
+        let nextHoliday = holidays.find(holiday => holiday > today);
+
+        const timeDiff = nextHoliday - today;
+        const daysDiff = Math.ceil(timeDiff / (1000 * 3600 * 24));
+        document.getElementById('daysUntilHolidays').value = daysDiff;
+    }
+</script>
+
 <body onload="calculateDaysUntilHolidays()">
-    <script>
-        function calculateDaysUntilHolidays() 
-        {
-            const today = new Date();
-            const year = today.getFullYear();
-            const holidays = [
-                new Date(year, 11, 30), 
-                new Date(year, 5, 1)    
-            ];
-
-            let nextHoliday = holidays.find(holiday => holiday > today);
-           
-            const timeDiff = nextHoliday - today;
-            const daysDiff = Math.ceil(timeDiff / (1000 * 3600 * 24)); 
-            document.getElementById('daysUntilHolidays').value = daysDiff;
-        }
-    </script>
-
     <label for="daysUntilHolidays">Дней до каникул:</label>
     <input type="text" id="daysUntilHolidays" readonly>
 </body>

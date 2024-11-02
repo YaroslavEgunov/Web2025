@@ -6,17 +6,17 @@
     <link rel=stylesheet type="text/css" href="style.css">
 </head>
 
-<body>
-    <script>
-        function calculateArea() 
-        {
-            const length = parseFloat(document.getElementById('length').value);
-            const width = parseFloat(document.getElementById('width').value);
-            const area = length * width;
-            document.getElementById('result').textContent = `Площадь прямоугольника: ${area}`;
-        }
-    </script>
+<script>
+    function calculateArea() 
+    {
+        const length = parseFloat(document.getElementById('length').value);
+        const width = parseFloat(document.getElementById('width').value);
+        const area = length * width;
+        document.getElementById('result').textContent = `Площадь прямоугольника: ${area}`;
+    }
+</script>
 
+<body>
     <label for="length">Длина:</label>
     <input type="number" id="length" required>
     <br>

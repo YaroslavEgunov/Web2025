@@ -6,42 +6,41 @@
     <link rel=stylesheet type="text/css" href="style.css">
 </head>
 
+<script>
+    function submitForm(event) {
+        event.preventDefault();
+
+        const name = document.getElementById('name').value;
+        const gender = document.querySelector('input[name="gender"]:checked').value;
+        const phone = document.getElementById('phone').value;
+        const email = document.getElementById('email').value;
+        const bloodType = document.getElementById('bloodType').value;
+        const specialty = document.getElementById('specialty').value;
+
+        const biography = `
+                            <h1>Биография</h1>
+                            <p><strong>ФИО:</strong> ${name}</p>
+                            <p><strong>Пол:</strong> ${gender}</p>
+                            <p><strong>Телефон:</strong> ${phone}</p>
+                            <p><strong>Почта:</strong> ${email}</p>
+                            <p><strong>Группа крови:</strong> ${bloodType}</p>
+                            <p><strong>Специальность:</strong> ${specialty}</p>
+                        `;
+
+        const biographyWindow = window.open('', '_blank');
+        biographyWindow.document.write(biography);
+        biographyWindow.document.close();
+
+        document.getElementById('name').value = '';
+        document.querySelector('input[name="gender"]:checked').checked = false;
+        document.getElementById('phone').value = '';
+        document.getElementById('email').value = '';
+        document.getElementById('bloodType').value = '';
+        document.getElementById('specialty').value = '';
+    }
+</script>
+
 <body>
-    <script>
-        function submitForm(event) 
-        {
-            event.preventDefault();
-
-            const name = document.getElementById('name').value;
-            const gender = document.querySelector('input[name="gender"]:checked').value;
-            const phone = document.getElementById('phone').value;
-            const email = document.getElementById('email').value;
-            const bloodType = document.getElementById('bloodType').value;
-            const specialty = document.getElementById('specialty').value;
-
-            const biography = `
-                        <h1>Биография</h1>
-                        <p><strong>ФИО:</strong> ${name}</p>
-                        <p><strong>Пол:</strong> ${gender}</p>
-                        <p><strong>Телефон:</strong> ${phone}</p>
-                        <p><strong>Почта:</strong> ${email}</p>
-                        <p><strong>Группа крови:</strong> ${bloodType}</p>
-                        <p><strong>Специальность:</strong> ${specialty}</p>
-                    `;
-
-            const biographyWindow = window.open('', '_blank');
-            biographyWindow.document.write(biography);
-            biographyWindow.document.close();
-
-            document.getElementById('name').value = '';
-            document.querySelector('input[name="gender"]:checked').checked = false;
-            document.getElementById('phone').value = '';
-            document.getElementById('email').value = '';
-            document.getElementById('bloodType').value = '';
-            document.getElementById('specialty').value = '';
-        }
-    </script>
-
     <h1>Анкета</h1>
     <form onsubmit="submitForm(event)" >
         <label for="name">ФИО:</label>
