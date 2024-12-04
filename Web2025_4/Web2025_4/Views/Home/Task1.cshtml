@@ -1,0 +1,90 @@
+﻿@{
+    ViewData["Title"] = "Задача";
+}
+
+<head>
+    <style>
+        #main > div {
+            display: inline-block;
+            width: 200px;
+            height: 300px;
+        }
+    </style>
+</head>
+
+<script>
+    class Person {
+        constructor(surname, name, fathername, birthday, phone, email) {
+            this.surname = surname;
+            this.name = name;
+            this.fathername = fathername;
+            this.birthday = birthday;
+            this.phone = phone;
+            this.email = email;
+        }
+        Add() {
+            var text = document.createElement('p');
+            text.innerHTML = `<p>${this.surname}</p>
+                            <p>${this.name}</p>
+                            <p>${this.fathername}</p>
+                            <p>${this.birthday}</p>
+                            <p>${this.phone}</p>
+                            <p>${this.email}</p>`
+            var div = document.createElement('div');
+            div.appendChild(text);
+            document.getElementById('main').appendChild(div);
+        }
+    }
+    function AddPerson() {
+        var surname = document.getElementById('surname').value;
+        var name = document.getElementById('name').value;
+        var fathername = document.getElementById('fathername').value;
+        var birthday = document.getElementById('birthday').value;
+        var phone = document.getElementById('phone').value;
+        var email = document.getElementById('email').value;
+        var person = new Person(surname, name, fathername, birthday, phone, email);
+        person.Add();
+    }
+</script>
+
+<body>
+    <label>Введите фамилию:</label>
+    <br>
+    <input type="text" id="surname" />
+    <br>
+    <label>Введите имя:</label>
+    <br>
+    <input type="text" id="name" />
+    <br>
+    <label>Введите отчество:</label>
+    <br>
+    <input type="text" id="fathername" />
+    <br>
+    <label>Введите день рождения:</label>
+    <br>
+    <input type="text" id="birthday" />
+    <br>
+    <label>Введите номер телефона:</label>
+    <br>
+    <input type="text" id="phone" />
+    <br>
+    <label>Введите электронную почту:</label>
+    <br>
+    <input type="text" id="email" />
+    <br>
+    <br>
+    <input type="button" value="Добавить" onclick="AddPerson()" />
+    <br>
+    <br>
+    <div id="main">
+        <div>
+            <p>Фамилия:</p>
+            <p>Имя:</p>
+            <p>Отчество:</p>
+            <p>День рождения:</p>
+            <p>Телефон:</p>
+            <p>Электронная почта:</p>
+        </div>
+    </div>
+</body>
+
