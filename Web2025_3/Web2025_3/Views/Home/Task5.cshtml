@@ -1,0 +1,78 @@
+﻿@{
+    ViewData["Title"] = "Задача 5";
+}
+
+<head>
+    <link rel=stylesheet type="text/css" href="style.css">
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            height: 100%;
+        }
+
+        #background {
+            position: absolute;
+            width: 65%;
+            height: 75%;
+            z-index: 1;
+        }
+
+        #moving {
+            position: absolute;
+            width: 150px; 
+            height: auto; 
+            z-index: 2;
+        }
+    </style>
+</head>
+
+<body>
+    <img id="background" src="~/images/background.jpg"  alt="Фоновое изображение">
+    <img id="moving" src="~/images/move.jpg" alt="Движущееся изображение">
+
+    <script>
+        const moving = document.getElementById('moving');
+        const background = document.getElementById('background');
+        let posY = 250;
+        let posX = 350;
+        let direction = 'down';
+        let phase = 0;
+
+        function move() {
+            if (direction === 'down') {
+                posR = posX + 150;Ы
+                posY += 4; 
+                if (posY >= background.offsetHeight) {
+                    direction = 'right';
+                    phase++;
+                }       
+            } else if (direction === 'right') {
+                posX += 5; 
+                if (posX == posR) {
+                    if (posR > background.offsetWidth) {
+                        throw new Error('Script stopped')
+                    }
+                    direction = 'up';
+                    phase++;
+                }
+            } else if (direction === 'up') {
+                posY -= 4; 
+                if (posY <= 75) {
+                    if (phase % 2 === 0) {
+                        posR = posX + 150;
+                        direction = 'right';
+                    } else {
+                        direction = 'down';
+                        phase++;
+                    }
+                } 
+            }
+            moving.style.top = posY + 'px';
+            moving.style.left = posX + 'px';
+            requestAnimationFrame(move);
+        }
+        move();
+    </script>
+</body>

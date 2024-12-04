@@ -1,0 +1,119 @@
+﻿@{
+    ViewData["Title"] = "Задача 1";
+}
+
+<head>
+    <title>Художественная галерея</title>
+    <style>
+        .portrait {
+            display: inline-block;
+            margin: 10px;
+            text-align: center;
+        }
+            .portrait img {
+                width: 200px;
+                height: 200px;
+            }
+    </style>
+</head>
+
+<script>
+    function openGallery() {
+        let Repin = document.getElementById('Repin');
+        let Tropinin = document.getElementById('Tropinin');
+        let Wassnezow = document.getElementById('Wassnezow');
+        switch (document.getElementById('artists').value) {
+            case 'Repin':
+                artistImage = "<img src='/images/Repin.jpg'>";
+                break;
+            case 'Tropinin':
+                artistImage = "<img src='/images/Tropinin.jpg'>";
+                break;
+
+            case 'Wassnezow':
+                artistImage = "<img src='/images/Wassnezow.jpg'>";
+                break;
+            default:
+                alert("Пожалуйста, выберите художника");
+                return;
+        }
+        let artistText = document.getElementById('flavorText').value;
+        let bgImage;
+        if (document.getElementById('background1').checked) {
+            bgImage = '/images/background1.jpg';
+        }
+        if (document.getElementById('background2').checked) {
+            bgImage = '/images/background2.jpg';
+        }
+        if (document.getElementById('background3').checked) {
+            bgImage = '/images/background3.jpg';
+        }
+        if (document.getElementById('italic').checked) {
+            artistText = artistText.italics();
+        }
+        if (document.getElementById('underline').checked) {
+            artistText = `<u>${artistText}</u>`;
+        }
+        if (document.getElementById('bold').checked) {
+            artistText = artistText.bold();
+        }
+        let newPage = `<style>
+                        body { 
+                            background-image: url(${bgImage}); 
+                            background-size: cover; 
+                            color:aliceblue;
+                            text-align:center;
+                            font-size: 28px;
+                        }
+                        img {
+                            width: 600px;
+                            height: auto;
+                        }
+                    </style>
+                    <p>${artistImage}</p>
+                    <p>${artistText}</p>`;
+        let win = window.open();
+        win.document.write(newPage);
+    }
+</script>
+
+<body>
+    <label for="artists">Художник:</label>
+    <select id="artists">
+        <option id="None" value="#">Выберите художника</option>
+        <option id="Repin" value="Repin">Репин</option>
+        <option id="Tropinin" value="Tropinin">Тропинин</option>
+        <option id="Wassnezow" value="Wassnezow">Васнецов</option>
+    </select>
+    <br>
+    <br>
+    <label for="flavorText">Подпись:</label>
+    <input type="text" id="flavorText" />
+    <br>
+    <div id="main">
+        <div>
+            <div class="portrait">
+                <img src="/images/background1.jpg" alt="Фон 1"><br>
+				<input type="radio" name="background" id="background1" checked="checked" /> Фон 1<br />
+            </div>
+            <div class="portrait">
+                <img src="/images/background2.jpg" alt="Фон 2"><br>
+                <input type="radio" name="background" id="background2" /> Фон 2<br />
+            </div>
+            <div class="portrait">
+                <img src="/images/background3.jpg" alt="Фон 3"><br>
+                <input type="radio" name="background" id="background3" /> Фон 3<br />
+            </div>
+        </div>
+        <div>
+            Форматирование текста
+            <br>
+            <input type="checkbox" id="italic" /> Курсив<br />
+            <input type="checkbox" id="underline" /> Подчеркивание<br />
+            <input type="checkbox" id="bold" /> Жирный<br />
+            <input type="button" value="Показать" onclick="openGallery()" />
+        </div>
+    </div>
+    <br>
+</body>
+

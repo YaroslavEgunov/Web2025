@@ -1,0 +1,73 @@
+﻿@{
+    ViewData["Title"] = "Задача 2";
+}
+
+<head>
+    <link rel=stylesheet type="text/css" href="style.css">
+    <style>
+        table {
+            padding: 5px;
+            border: 3px double blue;
+        }
+
+        td {
+            padding: 5px;
+            border: 3px double blue;
+        }
+
+        img[src=""] {
+            display: none;
+        }
+    </style>
+</head>
+
+<script>
+    function Hippo(flag) {
+        if (flag) {
+            document.getElementById('animal').src = '/images/hippo.png';
+        }
+        else {
+            document.getElementById('animal').src = "";
+        }
+    }
+    function Shark(flag) {
+        if (flag) {
+            document.getElementById('animal').src = '/images/shark.jpg';
+        }
+        else {
+            document.getElementById('animal').src = "";
+        }
+    }
+    function Mamont(flag) {
+        if (flag) {
+            document.getElementById('animal').src = '/images/mamont.jpg';
+        }
+        else {
+            document.getElementById('animal').src = "";
+        }
+    }
+</script>
+
+<body onload="calculateDaysUntilHolidays()">
+    <table>
+        <tr>
+            <td onmouseover="Hippo(true);" onmouseout="Hippo(false);">
+                Бегемот
+            </td>
+            <td width="400" height="400" rowspan="0">
+                <img src="" width="400" height="400" id="animal"></img>
+            </td>
+        </tr>
+        <tr>
+            <td onmouseover="Shark(true);" onmouseout="Shark(false)">
+                Акула
+            </td>
+        </tr>
+        <tr>
+            <td onmouseover="Mamont(true);" onmouseout="Mamont(false);">
+                Мамонт
+            </td>
+        </tr>
+    </table>
+</body>
+

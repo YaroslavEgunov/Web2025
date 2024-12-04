@@ -1,0 +1,43 @@
+﻿@{
+    ViewData["Title"] = "Задача 3";
+}
+
+<head>
+    <link rel=stylesheet type="text/css" href="style.css">
+    <style>
+        .main {
+            width: 250px;
+            height: 250px;
+            border: inset 10px blue;
+            background: skyblue;
+        }
+    </style>
+</head>
+
+<script>
+    let i = 0;
+    function Change() {
+        let button = document.getElementById('changeButton');
+        let div = document.getElementById('changeDiv');
+        if (i == 0) {
+            button.value = '˗ˏˋ Стану синим ˎˊ˗';
+            div.style.background = 'lightcoral';
+            i = 1;
+        }
+        else {
+            button.value = '˗ˏˋ Стану красным ˎˊ˗';
+            div.style.background = 'skyblue';
+            i = 0;
+        }
+    }
+</script>
+
+<body>
+    <div id="changeDiv" class="main">
+    </div>
+    <br>
+    <input type="button" class="ChangeButton" id="changeButton" value="˗ˏˋ Стану красным ˎˊ˗" onclick="Change()" />
+    <br>
+</body>
+
+
