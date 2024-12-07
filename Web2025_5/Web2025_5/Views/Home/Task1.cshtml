@@ -1,0 +1,77 @@
+﻿@{
+    ViewData["Title"] = "Задача";
+}
+
+<head>
+    <style>
+        img {
+            max-width: 50%;
+            max-height: 50%;
+            margin-bottom: 20px;
+        }
+
+        button {
+            padding: 10px 20px;
+            margin: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        #imageNumber {
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+
+
+
+<body onload="updateImageNumber(0)">
+    <img id="galleryImage" src="" alt="Галерея" style="opacity: 0;">
+    <div id="imageNumber">Изображение 1 из </div>
+    <div>
+        <button id="prevButton">Назад</button>
+        <button id="nextButton">Вперед</button>
+    </div>
+
+    <script>
+        const images = [
+            "https://avatars.mds.yandex.net/get-shedevrum/11270697/45fc65bbd2a711ee9c288e8848d31885/orig",
+            "https://masterpiecer-images.s3.yandex.net/a2124db98b2c11ee8cabd659965eed18:upscaled",
+            "https://masterpiecer-images.s3.yandex.net/d0d78821798f11eeb0fe3a7ca4cc1bdc:upscaled",
+            "https://masterpiecer-images.s3.yandex.net/7dedd79e9be111eeb4bfb61765e8ab70:upscaled",
+            "https://masterpiecer-images.s3.yandex.net/5c018c09977511eebe8f56181a0358a2:upscaled",
+            "https://masterpiecer-images.s3.yandex.net/c32f02c693c011ee9fad5696910b1137:upscaled",
+            "https://masterpiecer-images.s3.yandex.net/609bf0fba9a611eeb6a47e0da7a07983:upscaled"
+        ];
+        let currentIndex = 0;
+
+        async function loadImage(index) {
+            const img = document.getElementById('galleryImage');
+            await new Promise(resolve => setTimeout(resolve, 1000)); 
+            img.src = images[index];
+            img.style.opacity = 1;
+
+        }
+
+        function updateImageNumber(index) {
+            const imageNumber = document.getElementById('imageNumber');
+            imageNumber.innerText = `Изображение ${index + 1} из ${images.length}`;
+        }
+
+        document.getElementById('prevButton').addEventListener('click', () => {
+            currentIndex = (currentIndex - 1 + images.length) % images.length;
+            updateImageNumber(currentIndex);
+            loadImage(currentIndex); 
+        });
+
+        document.getElementById('nextButton').addEventListener('click', () => {
+            currentIndex = (currentIndex + 1) % images.length;
+            updateImageNumber(currentIndex);
+            loadImage(currentIndex); 
+        });
+
+        loadImage(currentIndex);
+    </script>
+</body>
+
